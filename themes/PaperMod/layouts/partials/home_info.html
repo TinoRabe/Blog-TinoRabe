@@ -1,0 +1,30 @@
+{{- with site.Params.homeInfoParams }}
+<article class="first-entry home-info">
+    <header class="entry-header">
+        <h1>{{ .Title | markdownify }}</h1>
+    </header>
+    <div class="entry-content">
+        <p>{{ .Content | markdownify }}</p>
+    </div>
+    <footer class="entry-footer">
+        {{ partial "social_icons.html" site.Params.socialIcons }}
+    </footer>
+    <div>
+        <p>Categories:</p>
+        {{range ($.Site.GetPage "taxonomyTerm" "categories").Pages }}
+        <button class= "terms-tags">
+            <a href="{{.Permalink}}">{{.Title}}</a></li>
+        </button>
+        {{end}}
+        
+    </div>
+    <div>
+        <p>Tags:</p>
+        {{range ($.Site.GetPage "taxonomyTerm" "tags").Pages }}
+        <button class= "terms-tags">
+            <a href="{{.Permalink}}">{{.Title}}</a></li>
+        </button>
+        {{end}}
+    </div>
+</article>
+{{- end -}}
