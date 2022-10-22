@@ -78,14 +78,74 @@ For this example, the code looks like this:
 
 ![Web Template to host FetchXML statement](/img/HTML-Grid-Fetch-Account-WebTemplate.png)
 
-# Result
 Now create a Page Template record to host our custom Web Template and just use this Page Template in a Web Page.
 As we are logging to the console of the browser dev tools, the result should look something like this:
 
 ![Web Template to host FetchXML statement](/img/HTML-Grid-Fetch-Account-UnitTest.png)
 
 Very good, we have successfully queried the account data form Dataverse by custom code.
-In the next blog post, we will take this a step further and query the primary contact of the account, which means querying data from an associated entity.
+What is missing now?
+Exactly, inject the queried data into an HTML table.
+To achieve this, I like to separate the data provider from the interface definition.
+That means, we will create another Web template to actually build out the HTML table.
+
+# Build custom HTML table
+
+```html
+{% comment %} Data Provider {% endcomment %}
+{% include 'Custom HTML Grid - Retrieve Account' %}
+
+{% comment %} Custom Content {% endcomment %}
+<div class="container">
+    <div class="row">
+         <div class="page-heading">
+            {% include 'Breadcrumbs' %}
+            {% include 'Page Header' %}
+        </div>
+    </div>
+    {% comment %} Custom HTML Table {% endcomment %}
+    <div class="row">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Account Name</th>
+                    <th>Main Phone</th>
+                    <th>Address 1: City</th>
+                </tr>
+            </thead>
+            <tr>
+                {% for account in fetch_accounts.results.entities %}        
+                    <td>{{account.name}}</td>
+                    <td>{{account.telephone1}}</td>
+                    <td>{{account.address1_city}}</td>   
+                {% endfor %}
+            </tr>
+        </table>
+    </div>
+</div>
+```
+
+# Fix / rename / localize column labels
+Now we have the chance to effectively clear one issue as we have more control over the HTML grid.
+The column lables can be named & localized with the help of content snippets.
+Simply create one content snippet per column and per language and inject them into the code.
+Then, replace the table header definition with content snippets by leveraging the Liquid syntax tag:
+
+```html
+<tr>
+  <th>{{ snippets["HTMLGrid/AccountName"] }}</th>
+  <th>{{ snippets["HTMLGrid/MainPhone"] }}</th>
+  <th>{{ snippets["HTMLGrid/AccountCity"] }}</th>
+</tr>       
+```
+
+This is now our result:
+
+![Custom HTML Grid Result](/img/HTML-Grid-Fetch-Account-Result.png)
+
+Excellent, now we have cleared the issue and even gained control for further developments (even localized, *woohoo*!).
+
+In the next blog post, we will take this a step further and query the primary contact of the account, which means querying data from an associated entity & then also inject this data into our custom HTML grid.
 
 # Disclaimer 
 I will always be a learner and naturally leave room for further improvement. There are so many pre-built libraries out there, but I am trying to re-invent the wheel here on purpose, so that I understand how things work under the hood (to some degree, of course). Hopefully this post helps somebody out to realize their solution.
