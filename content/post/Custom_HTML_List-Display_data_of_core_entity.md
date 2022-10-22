@@ -52,26 +52,25 @@ For this example, the code looks like this:
 ```html
 {% comment %} Data Provider {% endcomment %} 
 {% fetchxml fetch_accounts %}
-    <fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
-    <entity name="account">
-        <attribute name="name" />
-        <attribute name="telephone1" />
-        <attribute name="address1_city" />
-        <order attribute="name" descending="false" />
-    </entity>
-    </fetch>
+<fetch mapping="logical">
+  <entity name="account">
+    <attribute name="name" />
+    <attribute name="telephone1" />
+    <attribute name="address1_city" />
+  </entity>
+</fetch>
 {% endfetchxml %}
 
 {% comment %} Unit Test {% endcomment %}
 <script>
-    console.log ("FetchXML Result for Account")
-    console.group ("Account Details")
-    {% for account in fetch_accounts.results.entities %}        
-        console.log ("{{account.name}}")
-        console.log ("{{account.telephone1}}")
-        console.log ("{{account.address1_city}}")   
-    {% endfor %}
-    console.groupEnd()
+  console.log ("FetchXML Result for Account")
+  console.group ("Account Details")
+  {% for account in fetch_accounts.results.entities %}        
+      console.log ("{{account.name}}")
+      console.log ("{{account.telephone1}}")
+      console.log ("{{account.address1_city}}")   
+  {% endfor %}
+  console.groupEnd()
 </script>
 ```
 
