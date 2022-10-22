@@ -44,7 +44,7 @@ The downloaded FetchXML statement shall look like this for this example:
 </fetch>
 ```
 
-# Host FetchXML statement in custom Web Template incl. unit test
+# Host FetchXML statement in custom Web Template (incl. Unit Test)
 Now we will create a new Web Template record and insert the FetchXML in there.
 Remember to utilize the appropriate Liquid tags for FetchXML.
 Last but not least, let's check if our query actually deliveres the expected results.
