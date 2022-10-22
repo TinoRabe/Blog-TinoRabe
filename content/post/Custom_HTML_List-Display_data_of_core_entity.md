@@ -135,16 +135,53 @@ Simply create one content snippet per column and per language and inject them in
 Then, replace the table header definition with content snippets by leveraging the Liquid tag:
 
 ```html
-<tr>
-  <th>{{ snippets["HTMLGrid/AccountName"] }}</th>
-  <th>{{ snippets["HTMLGrid/MainPhone"] }}</th>
-  <th>{{ snippets["HTMLGrid/AccountCity"] }}</th>
-</tr>       
+<thead>
+  <tr>
+    <th>{{ snippets["HTMLGrid/AccountName"] }}</th>
+    <th>{{ snippets["HTMLGrid/MainPhone"] }}</th>
+    <th>{{ snippets["HTMLGrid/AccountCity"] }}</th>
+  </tr>
+</thead>       
 ```
 
 This is now our result:
 
 ![Custom HTML Grid Result](/img/HTML-Grid-Fetch-Account-Result.png)
+
+And here is the definition of the final Web Template:
+```html
+{% comment %} Data Provider {% endcomment %}
+{% include 'Custom HTML Grid - Retrieve Account' %}
+
+{% comment %} Custom Content {% endcomment %}
+<div class="container">
+    <div class="row">
+         <div class="page-heading">
+            {% include 'Breadcrumbs' %}
+            {% include 'Page Header' %}
+        </div>
+    </div>
+    {% comment %} Custom HTML Table {% endcomment %}
+    <div class="row">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>{{ snippets["HTMLGrid/AccountName"] }}</th>
+                    <th>{{ snippets["HTMLGrid/MainPhone"] }}</th>
+                    <th>{{ snippets["HTMLGrid/AccountCity"] }}</th>
+                </tr>
+            </thead>
+            <tr>
+                {% for account in fetch_accounts.results.entities %}        
+                    <td>{{account.name}}</td>
+                    <td>{{account.telephone1}}</td>
+                    <td>{{account.address1_city}}</td>   
+                {% endfor %}
+            </tr>
+        </table>
+    </div>
+</div>
+```
 
 Excellent, now we have cleared the issue and even gained control for further developments (even localized, *woohoo*!).
 
