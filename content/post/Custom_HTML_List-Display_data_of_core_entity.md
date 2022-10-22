@@ -90,6 +90,9 @@ To achieve this, I like to separate the data provider from the interface definit
 That means, we will create another Web template to actually build out the HTML table.
 
 # Build custom HTML table
+We now stitch everything together and utilize our query in a standard HTML table.
+I have inserted the page heading and the bread crumbs to create a more visually appealing look and feel of this demo.
+Also, standard Bootsrap table classes are leveraged.
 
 ```html
 {% comment %} Data Provider {% endcomment %}
@@ -127,9 +130,9 @@ That means, we will create another Web template to actually build out the HTML t
 
 # Fix / rename / localize column labels
 Now we have the chance to effectively clear one issue as we have more control over the HTML grid.
-The column lables can be named & localized with the help of content snippets.
+The column labels can be named & localized with the help of content snippets.
 Simply create one content snippet per column and per language and inject them into the code.
-Then, replace the table header definition with content snippets by leveraging the Liquid syntax tag:
+Then, replace the table header definition with content snippets by leveraging the Liquid tag:
 
 ```html
 <tr>
