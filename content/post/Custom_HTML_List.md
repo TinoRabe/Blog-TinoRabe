@@ -60,5 +60,5 @@ Let's break it down into digestable pieces & look at the following building bloc
 7. Enable multi-selection for action buttons
 
 # Disclaimer 
-I will always be a learner and naturaly leave room for further improvement. There are so many pre-built libraries out there, but I am trying to re-invent the wheel here on purpose, so that I understand how things work under the hood (to some degree, of course). Hopefully this post helps somebody out to realize their solution.
+I will always be a learner and naturally leave room for further improvement. There are so many pre-built libraries out there, but I am trying to re-invent the wheel here on purpose, so that I understand how things work under the hood (to some degree, of course). Hopefully this post helps somebody out to realize their solution.
 *****
