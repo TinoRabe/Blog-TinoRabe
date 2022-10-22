@@ -23,7 +23,7 @@ ShowPostNavLinks: true
 # weight: 1
 ---
 *****
-# Intro
+# Build FetchXML statement
 Let's start with querying the data now.
 The core entity (a.k.a. 'table') is 'Accounts' (account) and as we want to refactor the standard list from the intro blog post, we will need the following attributes (a.k.a 'columns'):
 - Account Name
@@ -43,6 +43,8 @@ The downloaded FetchXML statement shall look like this for this example:
   </entity>
 </fetch>
 ```
+
+# Host FetchXML statement in custom Web Template incl. unit test
 Now we will create a new Web Template record and insert the FetchXML in there.
 Remember to utilize the appropriate Liquid tags for FetchXML.
 Last but not least, let's check if our query actually deliveres the expected results.
@@ -76,6 +78,7 @@ For this example, the code looks like this:
 
 ![Web Template to host FetchXML statement](/img/HTML-Grid-Fetch-Account-WebTemplate.png)
 
+# Result
 Now create a Page Template record to host our custom Web Template and just use this Page Template in a Web Page.
 As we are logging to the console of the browser dev tools, the result should look something like this:
 
