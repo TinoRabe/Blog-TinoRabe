@@ -26,7 +26,7 @@ searchHidden: false
 ShowReadingTime: true
 ShowBreadCrumbs: true
 ShowPostNavLinks: true
-weight: 1
+# weight: 1
 ---
 *****
 Why should you follow this blog series? 
