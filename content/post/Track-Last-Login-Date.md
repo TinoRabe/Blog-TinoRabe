@@ -1,6 +1,6 @@
 ---
 title: 'Track Last Login Date - a Pro-Dev Solution'
-date: 2023-03-18T23:15:00.327Z
+date: 2023-03-18T22:27:00.327Z
 description:
   Today I'd like to share a pro-code approach for tracking the last successful login date of a logged-in user. This solution has become required as the former standard solution is deprecated.
 categories: ["Portals"]
