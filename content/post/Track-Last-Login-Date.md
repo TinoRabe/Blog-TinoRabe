@@ -168,13 +168,15 @@ In my case, it has been placed on the Web template "Home" as this Web Page will 
 # The Content Snippet in final shape.
 
 ```HTML
-{% comment %} Variables {% endcomment %} 
-
-{% assign today = now | date : 'd' %} 
-
-{% assign lastSuccessfulLogin = user.adx_identity_lastsuccessfullogin | date : 'd' %} 
-
 {% if user %}
+
+    {% comment %} Variables {% endcomment %} 
+
+    {% assign today = now | date : 'd' %} 
+
+    {% assign lastSuccessfulLogin = user.adx_identity_lastsuccessfullogin | date : 'd' %} 
+
+    {% comment %} Logic {% endcomment %} 
 
     {% if today <> lastSuccessfulLogin %}
 
@@ -220,5 +222,5 @@ In my case, it has been placed on the Web template "Home" as this Web Page will 
 # Disclaimer 
 I will always be a learner and naturally leave room for further improvement. I am trying to re-invent the wheel here on purpose, so that I understand how things work under the hood (to some degree, of course). Hopefully this post helps somebody out to realize their solution.
 
-I'd like to thank [Nikita Polyakov](https://www.linkedin.com/in/nikitapolyakov/) for some valuable feedback on this blog post, which led to some improvements.
+I'd like to thank [Nikita Polyakov](https://www.linkedin.com/in/nikitapolyakov/) & [Martin Wegner](https://www.linkedin.com/in/martinwegner/) for some valuable feedback on this blog post, which led to some improvements.
 *****
